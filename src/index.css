@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CRAUMAT Agricultural Equipment Design System */
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --background: 0 0% 98%;
+    --foreground: 38 15% 15%;
+    
+    /* CRAUMAT Green */
+    --primary: 102 50% 32%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 102 40% 45%;
+    --primary-dark: 102 60% 25%;
+    
+    /* CRAUMAT Yellow */
+    --accent: 54 100% 50%;
+    --accent-foreground: 38 15% 15%;
+    --accent-light: 54 100% 65%;
+    --accent-dark: 54 100% 40%;
+    
+    /* Supporting Colors */
+    --secondary: 38 8% 92%;
+    --secondary-foreground: 38 15% 15%;
+    
+    --muted: 38 6% 95%;
+    --muted-foreground: 38 8% 45%;
+    
+    /* Card & UI */
+    --card: 0 0% 100%;
+    --card-foreground: 38 15% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 38 15% 15%;
+    
+    --border: 38 8% 88%;
+    --input: 38 8% 88%;
+    --ring: 102 50% 32%;
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(102 50% 32%) 0%, hsl(102 40% 28%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(54 100% 50%) 0%, hsl(54 100% 45%) 100%);
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(38 15% 15% / 0.8) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px hsl(38 15% 15% / 0.1);
+    --shadow-md: 0 4px 12px hsl(38 15% 15% / 0.15);
+    --shadow-lg: 0 8px 32px hsl(38 15% 15% / 0.2);
+    --shadow-brand: 0 8px 32px hsl(102 50% 32% / 0.3);
+    
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 38 15% 8%;
+    --foreground: 0 0% 95%;
+    
+    --primary: 102 45% 38%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 102 40% 45%;
+    --primary-dark: 102 55% 30%;
+    
+    --accent: 54 95% 55%;
+    --accent-foreground: 38 15% 8%;
+    --accent-light: 54 90% 65%;
+    --accent-dark: 54 95% 45%;
+    
+    --secondary: 38 8% 18%;
+    --secondary-foreground: 0 0% 95%;
+    
+    --muted: 38 6% 15%;
+    --muted-foreground: 38 8% 65%;
+    
+    --card: 38 8% 12%;
+    --card-foreground: 0 0% 95%;
+    
+    --popover: 38 8% 12%;
+    --popover-foreground: 0 0% 95%;
+    
+    --border: 38 8% 25%;
+    --input: 38 8% 25%;
+    --ring: 102 45% 38%;
+    
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --gradient-hero: linear-gradient(135deg, hsl(102 45% 38%) 0%, hsl(102 50% 25%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(54 95% 55%) 0%, hsl(54 90% 50%) 100%);
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(38 15% 8% / 0.9) 100%);
+    
+    --shadow-sm: 0 2px 4px hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 12px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 8px 32px hsl(0 0% 0% / 0.4);
+    --shadow-brand: 0 8px 32px hsl(102 45% 38% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Brand specific utilities */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .shadow-brand {
+    box-shadow: var(--shadow-brand);
+  }
+  
+  .text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Agriculture themed patterns */
+  .hero-overlay {
+    background: var(--gradient-overlay);
+  }
+}
