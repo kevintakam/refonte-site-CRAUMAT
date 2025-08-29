@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prototype – John Deere FR (Tailwind CDN)</title>
+  <meta name="description" content="Prototype de refonte John Deere FR – Tailwind CDN, sans build ni installation." />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Icônes Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root{
+      --jd-green:#367C2B; /* Vert John Deere */
+      --jd-yellow:#FFDE00; /* Jaune John Deere */
+      --jd-dark:#27251F; /* Noir/brun JD */
+    }
+    .btn-primary{background:var(--jd-green);color:#fff}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-secondary{background:#fff;border:1px solid rgba(0,0,0,.1)}
+    .chip{background:#fff;border:1px solid rgba(0,0,0,.08);backdrop-filter:saturate(120%) blur(6px)}
+  </style>
+</head>
+<body class="bg-white text-neutral-900">
+  <!-- Topbar -->
+  <div class="w-full border-b bg-white/80 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-2 text-xs flex items-center justify-between">
+      <div class="flex items-center gap-3 text-neutral-700">
+        <span class="chip inline-flex items-center gap-2 rounded-full px-3 py-1 shadow-sm"><i data-lucide="phone" class="w-3.5 h-3.5"></i> Service & pièces : 08 00 00 00 00</span>
+        <span class="chip hidden sm:inline-flex items-center gap-2 rounded-full px-3 py-1 shadow-sm"><i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Trouver un concessionnaire</span>
+      </div>
+      <div class="flex items-center gap-2 text-neutral-700"><i data-lucide="globe" class="w-3.5 h-3.5"></i> FR — Europe</div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 w-full border-b bg-white/90 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg border border-black/10 flex items-center justify-center" style="background:var(--jd-green)">
+          <span class="text-sm font-extrabold" style="color:var(--jd-yellow)">JD</span>
+        </div>
+        <span class="hidden sm:inline text-sm font-semibold text-neutral-800">John Deere – Prototype FR</span>
+      </div>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <!-- Mega menu: Produits & solutions -->
+        <div class="relative group" id="megaGroup">
+          <button id="menuProdBtn" class="inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">
+            Produits & solutions
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </button>
+          <!-- Panel -->
+          <div id="megaPanel" class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-150 absolute left-0 top-full w-[min(95vw,1000px)] mt-2 rounded-2xl border border-black/10 bg-white shadow-xl">
+            <div class="grid grid-cols-[300px_1fr]">
+              <!-- Colonne catégories -->
+              <ul class="max-h-[60vh] overflow-auto p-3 pr-0 text-sm divide-y divide-black/5">
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="chargeurs">Chargeurs <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="construction">Équipement de construction <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="fourrages">Équipement pour la récolte des fourrages <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="moteurs">Moteurs et transmission <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="moissonneuses">Moissonneuses-batteuses <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="forestiers">Matériels forestiers <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="premium">Premium Used <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="pulverisateurs">Pulvérisateurs <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="semoirs">Semoirs <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="solutionsTech">Solutions technologiques <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="tracteurs">Tracteurs <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="tondeuses">Tondeuses <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="unites">Unités de récolte & plates-formes <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+                <li><a href="#" class="item-cat flex items-center justify-between gap-2 rounded-lg px-3 py-2 hover:bg-neutral-50" data-key="gator">Véhicules utilitaires Gator <i data-lucide="chevron-right" class="w-4 h-4"></i></a></li>
+              </ul>
+              <!-- Colonne contenu -->
+              <div class="p-5" id="prodPanel">
+                <h3 class="text-base font-semibold">Chargeurs</h3>
+                <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                  <a href="#" class="rounded-lg px-3 py-2 hover:bg-neutral-50">Chargeurs frontaux</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown: Secteurs -->
+        <div class="relative group" id="ddSecteurs">
+          <button id="ddSecteursBtn" class="inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">
+            Secteurs
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </button>
+          <div id="ddSecteursPanel" class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity absolute left-0 top-full mt-2 w-96 rounded-xl border border-black/10 bg-white shadow-xl p-2">
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Agricole</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Aménagement paysager et entretien des espaces verts</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Construction</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Forestier</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Moteurs et transmission</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Particuliers et propriétaires fonciers résidentiels</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Terrains de golf et de sport</a>
+          </div>
+        </div>
+
+        <!-- Dropdown: Pièces & assistance propriétaire -->
+        <div class="relative group" id="ddSupport">
+          <button id="ddSupportBtn" class="inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">
+            Pièces et assistance propriétaire
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </button>
+          <div id="ddSupportPanel" class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity absolute left-0 top-full mt-2 w-[28rem] rounded-xl border border-black/10 bg-white shadow-xl p-2">
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Boutique en ligne</a>
+            <!-- Sous-menu: Manuels et formation -->
+            <div class="relative group/manu">
+              <a href="#" class="flex items-center justify-between rounded-lg px-3 py-2 hover:bg-neutral-50">
+                Manuels et formation <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </a>
+              <div class="invisible opacity-0 group-hover/manu:visible group-hover/manu:opacity-100 transition-opacity absolute left-full top-0 ml-2 w-72 rounded-xl border border-black/10 bg-white shadow-xl p-2">
+                <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Manuels d'opérateur</a>
+                <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Guides d'entretien</a>
+                <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Formations</a>
+              </div>
+            </div>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Pièces</a>
+            <!-- Sous-menu: StellarSupport -->
+            <div class="relative group/stell">
+              <a href="#" class="flex items-center justify-between rounded-lg px-3 py-2 hover:bg-neutral-50">
+                StellarSupport <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </a>
+              <div class="invisible opacity-0 group-hover/stell:visible group-hover/stell:opacity-100 transition-opacity absolute left-full top-0 ml-2 w-72 rounded-xl border border-black/10 bg-white shadow-xl p-2">
+                <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Centre d'aide</a>
+                <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Téléchargements</a>
+              </div>
+            </div>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Services liés aux produits & garanties</a>
+          </div>
+        </div>
+
+        <!-- Raccourcis -->
+        <a href="#precision" class="hover:opacity-80">Agriculture de précision</a>
+        <a href="#support" class="hover:opacity-80">Pièces & Support</a>
+        <a href="#reseau" class="hover:opacity-80">Concessionnaires</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm">
+          <i data-lucide="search" class="w-4 h-4 text-neutral-500"></i>
+          <input aria-label="Rechercher" placeholder="Rechercher un modèle, une pièce…" class="w-52 outline-none placeholder:text-neutral-400" />
+        </div>
+        <button id="menuBtn" class="md:hidden inline-flex items-center rounded-xl border border-black/10 p-2" aria-label="Ouvrir le menu">
+          <span class="text-lg">≡</span>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden border-t bg-white md:hidden">
+          <div class="mx-auto max-w-7xl px-4 py-3 grid gap-2 text-sm font-medium">
+            <details>
+              <summary class="py-2 cursor-pointer">Produits & solutions</summary>
+              <div class="pl-4 py-2 grid grid-cols-1 gap-1 text-neutral-700">
+                <a href="#">Chargeurs</a>
+                <a href="#">Équipement de construction</a>
+                <a href="#">Équipement fourrages</a>
+                <a href="#">Moteurs & transmission</a>
+                <a href="#">Moissonneuses-batteuses</a>
+                <a href="#">Matériels forestiers</a>
+                <a href="#">Premium Used</a>
+                <a href="#">Pulvérisateurs</a>
+                <a href="#">Semoirs</a>
+                <a href="#">Solutions technologiques</a>
+                <a href="#">Tracteurs</a>
+                <a href="#">Tondeuses</a>
+                <a href="#">Unités de récolte & plates-formes</a>
+                <a href="#">Véhicules utilitaires Gator</a>
+              </div>
+            </details>
+            <details>
+              <summary class="py-2 cursor-pointer">Secteurs</summary>
+              <div class="pl-4 py-2 grid grid-cols-1 gap-1 text-neutral-700">
+                <a href="#">Agricole</a>
+                <a href="#">Aménagement paysager & entretien</a>
+                <a href="#">Construction</a>
+                <a href="#">Forestier</a>
+                <a href="#">Moteurs & transmission</a>
+                <a href="#">Particuliers & propriétaires fonciers</a>
+                <a href="#">Terrains de golf & sport</a>
+              </div>
+            </details>
+            <details>
+              <summary class="py-2 cursor-pointer">Pièces et assistance propriétaire</summary>
+              <div class="pl-4 py-2 grid grid-cols-1 gap-1 text-neutral-700">
+                <a href="#">Boutique en ligne</a>
+                <details>
+                  <summary class="cursor-pointer">Manuels et formation</summary>
+                  <div class="pl-4 py-1 grid gap-1">
+                    <a href="#">Manuels d'opérateur</a>
+                    <a href="#">Guides d'entretien</a>
+                    <a href="#">Formations</a>
+                  </div>
+                </details>
+                <a href="#">Pièces</a>
+                <details>
+                  <summary class="cursor-pointer">StellarSupport</summary>
+                  <div class="pl-4 py-1 grid gap-1">
+                    <a href="#">Centre d'aide</a>
+                    <a href="#">Téléchargements</a>
+                  </div>
+                </details>
+                <a href="#">Services liés aux produits & garanties</a>
+              </div>
+            </details>
+            <a href="#precision" class="py-2">Agriculture de précision</a>
+            <a href="#support" class="py-2">Pièces & Support</a>
+            <a href="#reseau" class="py-2">Concessionnaires</a>
+          </div>
+        </div>
+      </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden" aria-label="Héros" style="background: linear-gradient(180deg, var(--jd-green) 0%, #2b5e23 40%, #0b1a0a 100%)">
+    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 20% 30%, #ffffff 0, transparent 30%), radial-gradient(circle at 80% 10%, #ffffff 0, transparent 30%)"></div>
+    <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2 md:py-20">
+      <div>
+        <span class="chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium shadow-sm"><i data-lucide="sparkles" class="w-4 h-4"></i> Nouveau : Zéro émission en fonctionnement</span>
+        <h1 class="mt-4 text-4xl md:text-5xl font-extrabold leading-tight text-white">Productivité, fiabilité, <span style="color:var(--jd-yellow)">intelligence</span>.</h1>
+        <p class="mt-4 max-w-xl text-base text-white/80">Des tracteurs aux moissonneuses, du guidage au JDLink : tout un écosystème pour optimiser vos cultures et votre flotte.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#reseau" class="btn-primary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-md">Trouver un concessionnaire <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+          <a href="#produits" class="btn-secondary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-sm">Voir les produits</a>
+        </div>
+        <div class="mt-8 grid w-full max-w-xl grid-cols-3 gap-4 rounded-2xl bg-black/20 p-4 text-white">
+          <div class="text-center"><div class="text-3xl font-extrabold" style="color:var(--jd-yellow)">&gt; 75k</div><div class="mt-1 text-sm opacity-90">moteurs produits</div></div>
+          <div class="text-center"><div class="text-3xl font-extrabold" style="color:var(--jd-yellow)">&gt; 2 500</div><div class="mt-1 text-sm opacity-90">clients dans le monde</div></div>
+          <div class="text-center"><div class="text-3xl font-extrabold" style="color:var(--jd-yellow)">150+</div><div class="mt-1 text-sm opacity-90">pays couverts</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="relative mx-auto aspect-[16/10] w-full max-w-xl overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+          <img src="images/image1.png" alt="Tracteur dans un champ au lever du soleil" class="h-full w-full object-cover" />
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent p-4 text-white text-xs flex items-center gap-2 opacity-90">
+            <i data-lucide="gauge" class="w-4 h-4"></i> AutoTrac™ • JDLink™ • Télédiagnostic
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produits -->
+  <section id="produits" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-extrabold tracking-tight" style="color:var(--jd-dark)">Produits & matériels</h2>
+        <p class="mt-1 text-sm text-neutral-600">Tracteurs, récolte, pulvérisation, entretien des espaces verts…</p>
+      </div>
+      <a href="#" class="text-sm font-semibold" style="color:var(--jd-green)">Tout voir</a>
+    </div>
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Carte catégorie -->
+      <a href="#" class="group relative flex flex-col gap-3 rounded-2xl border border-black/10 bg-white p-5 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md" aria-label="Tracteurs 6R & 7R">
+        <span class="absolute right-3 top-3 rounded-full bg-black/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-neutral-700">Agricole</span>
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background:var(--jd-yellow)"><i data-lucide="truck" class="w-5 h-5" style="color:var(--jd-dark)"></i></div>
+          <h3 class="text-lg font-semibold">Tracteurs 6R & 7R</h3>
+        </div>
+        <p class="text-sm text-neutral-600">Puissance, précision et confort cabine pour longues journées au champ.</p>
+        <div class="mt-auto inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">Voir les modèles <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+      </a>
+
+      <a href="#" class="group relative flex flex-col gap-3 rounded-2xl border border-black/10 bg-white p-5 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md" aria-label="Moissonneuses X & T">
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background:var(--jd-yellow)"><i data-lucide="leaf" class="w-5 h-5" style="color:var(--jd-dark)"></i></div>
+          <h3 class="text-lg font-semibold">Moissonneuses X & T</h3>
+        </div>
+        <p class="text-sm text-neutral-600">Débit élevé, pertes minimisées, automatisations intelligentes.</p>
+        <div class="mt-auto inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">Voir les modèles <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+      </a>
+
+      <a href="#" class="group relative flex flex-col gap-3 rounded-2xl border border-black/10 bg-white p-5 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md" aria-label="Pulvérisateurs R">
+        <span class="absolute right-3 top-3 rounded-full bg-black/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-neutral-700">Protection des cultures</span>
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background:var(--jd-yellow)"><i data-lucide="shield-check" class="w-5 h-5" style="color:var(--jd-dark)"></i></div>
+          <h3 class="text-lg font-semibold">Pulvérisateurs R</h3>
+        </div>
+        <p class="text-sm text-neutral-600">Pulvérisation de précision, coupure buse à buse, contrôle dérive.</p>
+        <div class="mt-auto inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">Voir les modèles <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+      </a>
+
+      <a href="#" class="group relative flex flex-col gap-3 rounded-2xl border border-black/10 bg-white p-5 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md" aria-label="Presses & Fenaison">
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background:var(--jd-yellow)"><i data-lucide="sparkles" class="w-5 h-5" style="color:var(--jd-dark)"></i></div>
+          <h3 class="text-lg font-semibold">Presses & Fenaison</h3>
+        </div>
+        <p class="text-sm text-neutral-600">Presses haute densité, faucheuses, andaineurs, solutions fourrage.</p>
+        <div class="mt-auto inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">Voir les modèles <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+      </a>
+
+      <a href="#" class="group relative flex flex-col gap-3 rounded-2xl border border-black/10 bg-white p-5 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md" aria-label="Espaces verts & Golf">
+        <span class="absolute right-3 top-3 rounded-full bg-black/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-wide text-neutral-700">Turf</span>
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background:var(--jd-yellow)"><i data-lucide="wrench" class="w-5 h-5" style="color:var(--jd-dark)"></i></div>
+          <h3 class="text-lg font-semibold">Espaces verts & Golf</h3>
+        </div>
+        <p class="text-sm text-neutral-600">Tondeuses pro, Gator™, équipements terrains de sport.</p>
+        <div class="mt-auto inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">Voir les modèles <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+      </a>
+
+      <a href="#" class="group relative flex flex-col gap-3 rounded-2xl border border-black/10 bg-white p-5 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md" aria-label="Moteurs & transmissions">
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-xl flex items-center justify-center" style="background:var(--jd-yellow)"><i data-lucide="gauge" class="w-5 h-5" style="color:var(--jd-dark)"></i></div>
+          <h3 class="text-lg font-semibold">Moteurs & transmissions</h3>
+        </div>
+        <p class="text-sm text-neutral-600">Power Systems pour applications industrielles et OEM.</p>
+        <div class="mt-auto inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">Voir les modèles <i data-lucide="chevron-right" class="w-4 h-4"></i></div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Agriculture de précision -->
+  <section id="precision" class="relative border-y bg-gradient-to-b from-neutral-50 to-white py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mb-8 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-extrabold tracking-tight" style="color:var(--jd-dark)">Agriculture de précision</h2>
+          <p class="mt-1 text-sm text-neutral-600">Guidage AutoTrac™, documentation, connectivité JDLink™, partage des données.</p>
+        </div>
+        <a href="#" class="text-sm font-semibold" style="color:var(--jd-green)">Découvrir</a>
+      </div>
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <!-- Card 1 -->
+        <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-transform hover:-translate-y-0.5">
+          <div class="aspect-[16/9] w-full overflow-hidden">
+            <img src="#" alt="AutoTrac & guidage" class="h-full w-full object-cover" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold">AutoTrac™ & guidage</h3>
+            <p class="mt-1 text-sm text-neutral-600">Moins de chevauchements, plus de précision, réduction de carburant.</p>
+            <a href="#" class="mt-3 inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">En savoir plus <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+          </div>
+        </article>
+        <!-- Card 2 -->
+        <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-transform hover:-translate-y-0.5">
+          <div class="aspect-[16/9] w-full overflow-hidden">
+            <img src="#" alt="JDLink & télémétrie" class="h-full w-full object-cover" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold">JDLink™ & télémétrie</h3>
+            <p class="mt-1 text-sm text-neutral-600">Suivez l'utilisation, optimisez la flotte, maintenance proactive.</p>
+            <a href="#" class="mt-3 inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">En savoir plus <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+          </div>
+        </article>
+        <!-- Card 3 -->
+        <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-transform hover:-translate-y-0.5">
+          <div class="aspect-[16/9] w-full overflow-hidden">
+            <img src="#" alt="Documentation & partage" class="h-full w-full object-cover" />
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-semibold">Documentation & partage</h3>
+            <p class="mt-1 text-sm text-neutral-600">Rendement, application, cartes de champs — tout centralisé.</p>
+            <a href="#" class="mt-3 inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">En savoir plus <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support & pièces -->
+  <section id="support" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-extrabold tracking-tight" style="color:var(--jd-dark)">Pièces, service & assistance</h2>
+        <p class="mt-3 text-sm text-neutral-700">Disponibilité des pièces, JD Parts, diagnostics connectés, plans d'entretien et experts réseau.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#reseau" class="btn-primary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-md"><i data-lucide="wrench" class="w-4 h-4"></i> Prendre rendez-vous atelier</a>
+          <a href="#" class="btn-secondary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-sm">Accéder au catalogue pièces</a>
+        </div>
+        <ul class="mt-6 grid grid-cols-1 gap-3 text-sm text-neutral-700 sm:grid-cols-2">
+          <li class="flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i> Pièces d'origine & garanties</li>
+          <li class="flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4"></i> Livraison rapide</li>
+          <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> Hot-line technique</li>
+          <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> 150+ pays couverts</li>
+        </ul>
+      </div>
+      <div class="overflow-hidden rounded-3xl border border-black/10 bg-neutral-50 p-5 shadow-sm">
+        <img src="#" alt="Atelier et pièces" class="h-64 w-full rounded-2xl object-cover" />
+        <div class="mt-4 grid grid-cols-3 gap-4">
+          <div class="text-center"><div class="text-2xl font-extrabold" style="color:var(--jd-green)">24/7</div><div class="text-sm text-neutral-600">JD Parts</div></div>
+          <div class="text-center"><div class="text-2xl font-extrabold" style="color:var(--jd-green)">+10k</div><div class="text-sm text-neutral-600">réfs en stock</div></div>
+          <div class="text-center"><div class="text-2xl font-extrabold" style="color:var(--jd-green)">&gt;95%</div><div class="text-sm text-neutral-600">dispo sous 48h</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réseau -->
+  <section id="reseau" class="border-t bg-neutral-50 py-16">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="mb-8">
+        <h2 class="text-2xl font-extrabold tracking-tight" style="color:var(--jd-dark)">Réseau & proximité</h2>
+        <p class="mt-1 text-sm text-neutral-600">Des experts près de chez vous pour l'achat, la mise en route et le service.</p>
+      </div>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold">Localiser un concessionnaire</h3>
+          <p class="mt-1 text-sm text-neutral-600">Saisissez votre code postal pour trouver le point de vente le plus proche.</p>
+          <div class="mt-3 flex items-center gap-2">
+            <input class="w-full rounded-xl border border-black/10 px-3 py-2 text-sm outline-none" placeholder="Ex. 64000" aria-label="Code postal" />
+            <a href="#" class="btn-primary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-md">Chercher</a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold">Demander une démo</h3>
+          <p class="mt-1 text-sm text-neutral-600">Organisez un essai avec votre concessionnaire pour évaluer la machine sur vos parcelles.</p>
+          <a href="#" class="btn-secondary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-sm">Planifier</a>
+        </div>
+        <div class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+          <h3 class="text-base font-semibold">Financement & offres</h3>
+          <p class="mt-1 text-sm text-neutral-600">Solutions de financement adaptées à votre exploitation, offres saisonnières.</p>
+          <a href="#" class="btn-secondary inline-flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-semibold shadow-sm">Voir les options</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="mx-auto max-w-7xl px-4 py-16">
+    <div class="mb-8">
+      <h2 class="text-2xl font-extrabold tracking-tight" style="color:var(--jd-dark)">Questions fréquentes</h2>
+      <p class="mt-1 text-sm text-neutral-600">Les réponses rapides pour démarrer.</p>
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <details class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+        <summary class="cursor-pointer list-none text-base font-semibold flex items-center justify-between">Puis-je connecter mes machines non‑Deere à JDLink™ ?<i data-lucide="chevron-right" class="w-5 h-5"></i></summary>
+        <p class="mt-3 text-sm text-neutral-700">Oui, via certains kits de rétrofit compatibles. Vérifiez la compatibilité auprès de votre concessionnaire.</p>
+      </details>
+      <details class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+        <summary class="cursor-pointer list-none text-base font-semibold flex items-center justify-between">Comment obtenir un support pour AutoTrac™ ?<i data-lucide="chevron-right" class="w-5 h-5"></i></summary>
+        <p class="mt-3 text-sm text-neutral-700">Contactez votre concessionnaire qui dispose d'un accès aux ressources techniques et peut intervenir sur site.</p>
+      </details>
+      <details class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+        <summary class="cursor-pointer list-none text-base font-semibold flex items-center justify-between">Où trouver les références de pièces ?<i data-lucide="chevron-right" class="w-5 h-5"></i></summary>
+        <p class="mt-3 text-sm text-neutral-700">Dans le catalogue en ligne JD Parts et via votre concessionnaire qui peut vous conseiller.</p>
+      </details>
+      <details class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
+        <summary class="cursor-pointer list-none text-base font-semibold flex items-center justify-between">Proposez‑vous des solutions de financement ?<i data-lucide="chevron-right" class="w-5 h-5"></i></summary>
+        <p class="mt-3 text-sm text-neutral-700">Oui, des offres dédiées sont disponibles selon votre profil et la saison.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-10">
+      <div class="grid grid-cols-2 gap-6 text-sm sm:grid-cols-4">
+        <div>
+          <h4 class="mb-2 font-semibold">Produits</h4>
+          <ul class="space-y-1 text-neutral-700">
+            <li><a href="#">Tracteurs</a></li>
+            <li><a href="#">Récolte</a></li>
+            <li><a href="#">Pulvérisateurs</a></li>
+            <li><a href="#">Espaces verts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-2 font-semibold">Solutions</h4>
+          <ul class="space-y-1 text-neutral-700">
+            <li><a href="#">AutoTrac™</a></li>
+            <li><a href="#">JDLink™</a></li>
+            <li><a href="#">Documentation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-2 font-semibold">Support</h4>
+          <ul class="space-y-1 text-neutral-700">
+            <li><a href="#">JD Parts</a></li>
+            <li><a href="#">Prendre rendez-vous</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mb-2 font-semibold">Entreprise</h4>
+          <ul class="space-y-1 text-neutral-700">
+            <li><a href="#">Carrières</a></li>
+            <li><a href="#">Durabilité</a></li>
+            <li><a href="#">Presse</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t pt-6 text-xs text-neutral-600">
+        <p>Prototype non officiel réalisé à des fins de démonstration. Marques citées © leurs propriétaires.</p>
+        <div class="flex items-center gap-3">
+          <a href="#">Mentions légales</a><span>•</span>
+          <a href="#">Confidentialité</a><span>•</span>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Icônes Lucide + interactions
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) { window.lucide.createIcons(); }
+
+      // Menu mobile
+      const btn = document.getElementById('menuBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      }
+
+      // Mega menu: données (exemples succincts)
+      const menuData = {
+        chargeurs: { title: 'Chargeurs', links: [ ['Chargeurs frontaux', '#'] ] },
+        construction: { title: 'Équipement de construction', links: [ ['Chargeuses', '#'], ['Pelles compactes', '#'] ] },
+        fourrages: { title: 'Récolte des fourrages', links: [ ['Faucheuses', '#'], ['Faneuses', '#'], ['Andaineurs', '#'], ['Presses', '#'] ] },
+        moteurs: { title: 'Moteurs & transmission', links: [ ['Moteurs industriels', '#'], ['Power Systems', '#'] ] },
+        moissonneuses: { title: 'Moissonneuses-batteuses', links: [ ['Séries X', '#'], ['Séries T', '#'] ] },
+        forestiers: { title: 'Matériels forestiers', links: [ ['Abatteuses', '#'], ['Porteurs', '#'] ] },
+        premium: { title: 'Premium Used', links: [ ['Occasions certifiées', '#'] ] },
+        pulverisateurs: { title: 'Pulvérisateurs', links: [ ['Série R', '#'], ['Commande buse à buse', '#'] ] },
+        semoirs: { title: 'Semoirs', links: [ ['Monograines', '#'], ['Semis directs', '#'] ] },
+        solutionsTech: { title: 'Solutions technologiques', links: [ ['AutoTrac™', '#'], ['JDLink™', '#'], ['Documentation', '#'] ] },
+        tracteurs: { title: 'Tracteurs', links: [ ['Série 6R', '#'], ['Série 7R', '#'], ['Série 8R', '#'] ] },
+        tondeuses: { title: 'Tondeuses', links: [ ['Tondeuses pro', '#'], ['Gator™', '#'] ] },
+        unites: { title: 'Unités de récolte & plates-formes', links: [ ['Cueilleurs maïs', '#'], ['Barres de coupe', '#'] ] },
+        gator: { title: 'Véhicules utilitaires Gator', links: [ ['Gator™', '#'] ] },
+      };
+
+      // Rendu panneau droite
+      const panel = document.getElementById('prodPanel');
+      function renderPanel(key){
+        const d = menuData[key];
+        if (!panel || !d) return;
+        const items = d.links.map(([label, href]) => `<a href="${href}" class="rounded-lg px-3 py-2 hover:bg-neutral-50">${label}</a>`).join('');
+        panel.innerHTML = `<h3 class=\"text-base font-semibold\">${d.title}</h3><div class=\"mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm\">${items}</div>`;
+        if (window.lucide) window.lucide.createIcons();
+      }
+
+      // Hover/focus catégories
+      document.querySelectorAll('.item-cat').forEach(el => {
+        const key = el.getAttribute('data-key');
+        el.addEventListener('mouseenter', () => renderPanel(key));
+        el.addEventListener('focus', () => renderPanel(key));
+      });
+
+      // Accessibilité: aria-expanded sur le bouton mega
+      const megaGroup = document.getElementById('megaGroup');
+      const megaBtn = document.getElementById('menuProdBtn');
+      const megaPanel = document.getElementById('megaPanel');
+      if (megaGroup && megaBtn && megaPanel){
+        megaGroup.addEventListener('mouseenter', () => megaBtn.setAttribute('aria-expanded','true'));
+        megaGroup.addEventListener('mouseleave', () => megaBtn.setAttribute('aria-expanded','false'));
+        megaBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          megaPanel.classList.toggle('invisible');
+          megaPanel.classList.toggle('opacity-0');
+          megaBtn.setAttribute('aria-expanded', megaPanel.classList.contains('invisible') ? 'false' : 'true');
+        });
+      }
+
+      // Dropdowns: Secteurs & Support
+      function setupDropdown(btnId, panelId){
+        const btn = document.getElementById(btnId);
+        const panel = document.getElementById(panelId);
+        if (!btn || !panel) return;
+        // Hover states already via CSS with .group; also allow click toggle
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          panel.classList.toggle('invisible');
+          panel.classList.toggle('opacity-0');
+          btn.setAttribute('aria-expanded', panel.classList.contains('invisible') ? 'false' : 'true');
+        });
+      }
+      setupDropdown('ddSecteursBtn','ddSecteursPanel');
+      setupDropdown('ddSupportBtn','ddSupportPanel');
+
+      // Fermer au clic extérieur
+      document.addEventListener('click', (e) => {
+        const targets = [megaPanel, document.getElementById('ddSecteursPanel'), document.getElementById('ddSupportPanel')];
+        const buttons = [megaBtn, document.getElementById('ddSecteursBtn'), document.getElementById('ddSupportBtn')];
+        targets.forEach((p, i) => {
+          const b = buttons[i];
+          if (!p || !b) return;
+          if (!p.contains(e.target) && !b.contains(e.target)){
+            p.classList.add('invisible','opacity-0');
+            b.setAttribute('aria-expanded','false');
+          }
+        });
+      });
+
+      // FAQ chevrons rotation
+      document.querySelectorAll('details').forEach(d => {
+        d.addEventListener('toggle', () => {
+          const icon = d.querySelector('[data-lucide="chevron-right"]');
+          if (icon) icon.style.transform = d.open ? 'rotate(90deg)' : 'rotate(0deg)';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
