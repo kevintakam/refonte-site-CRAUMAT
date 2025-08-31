@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prototype – craumat</title>
-  <meta name="description" content="Prototype de refonte John Deere FR – Tailwind CDN, sans build ni installation." />
+  <meta name="description" content="Prototype de refonte CRAUMAT – Tailwind CDN, sans build ni installation." />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Icônes Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     :root{
-      --jd-green:#367C2B; /* Vert John Deere */
-      --jd-yellow:#FFDE00; /* Jaune John Deere */
+      --jd-green:#367C2B; /* Vert CRAUMAT*/
+      --jd-yellow:#FFDE00; /* Jaune CRAUMAT */
       --jd-dark:#27251F; /* Noir/brun JD */
     }
     .btn-primary{background:var(--jd-green);color:#fff}
@@ -37,10 +37,9 @@
   <header class="sticky top-0 z-40 w-full border-b bg-white/90 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-lg border border-black/10 flex items-center justify-center" style="background:var(--jd-green)">
-          <span class="text-sm font-extrabold" style="color:var(--jd-yellow)">JD</span>
+        <div class="brand-badge h-12 flex items-center">
+          <img src="images/logo.jpg" alt="Logo CRAUMAT" class="h-12 w-auto" />
         </div>
-        <span class="hidden sm:inline text-sm font-semibold text-neutral-800">CRAUMAT – Prototype FR</span>
       </div>
       <nav class="hidden md:flex gap-6 text-sm font-medium">
         <!-- Mega menu: Produits & solutions -->
@@ -131,6 +130,20 @@
         <a href="#precision" class="hover:opacity-80">Agriculture de précision</a>
         <a href="#support" class="hover:opacity-80">Pièces & Support</a>
         <a href="#reseau" class="hover:opacity-80">Concessionnaires</a>
+        <!-- Dropdown: Notre entreprise -->
+        <div class="relative group" id="ddEntreprise">
+          <button id="ddEntrepriseBtn" class="inline-flex items-center gap-1" aria-expanded="false" aria-haspopup="true">
+            Notre entreprise
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+          </button>
+          <div id="ddEntreprisePanel"
+            class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity absolute left-0 top-full mt-2 w-80 rounded-xl border border-black/10 bg-white shadow-xl p-2">
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Notre histoire</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Nos valeurs</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Conseil d'administration</a>
+            <a href="#" class="block rounded-lg px-3 py-2 hover:bg-neutral-50">Équipe</a>
+          </div>
+        </div>
       </nav>
       <div class="flex items-center gap-3">
         <div class="hidden md:flex items-center gap-2 rounded-xl border border-black/10 bg-white px-3 py-2 text-sm">
@@ -195,6 +208,16 @@
             <a href="#precision" class="py-2">Agriculture de précision</a>
             <a href="#support" class="py-2">Pièces & Support</a>
             <a href="#reseau" class="py-2">Concessionnaires</a>
+            <details>
+              <summary class="py-2 cursor-pointer">Notre entreprise</summary>
+              <div class="pl-4 py-2 grid grid-cols-1 gap-1 text-neutral-700">
+                <a href="#">Notre histoire</a>
+                <a href="#">Nos valeurs</a>
+                <a href="#">Conseil d'administration</a>
+                <a href="#">Équipe</a>
+              </div>
+            </details>
+
           </div>
         </div>
       </header>
@@ -297,7 +320,62 @@
       </a>
     </div>
   </section>
-
+<section id="familles" class="mx-auto max-w-7xl px-4 py-10">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-10 items-start text-center">
+    <!-- Tuile 1 -->
+    <a href="#" class="group flex flex-col items-center gap-3">
+      <span
+        class="relative inline-flex h-32 w-32 rounded-full overflow-hidden border border-black/10 shadow-sm transition-transform group-hover:scale-[1.02]">
+        <img src="images/tracteurs.jpg" alt="Tracteurs" class="h-full w-full object-cover" />
+      </span>
+      <span class="text-sm font-semibold" style="color:var(--jd-green)">Tracteurs</span>
+    </a>
+    <!-- Tuile 2 -->
+    <a href="#" class="group flex flex-col items-center gap-3">
+      <span
+        class="relative inline-flex h-32 w-32 rounded-full overflow-hidden border border-black/10 shadow-sm transition-transform group-hover:scale-[1.02]">
+        <img src="images/moissoneuse.jpg" alt="Moissonneuses-batteuses" class="h-full w-full object-cover" />
+      </span>
+      <span class="text-sm font-semibold text-balance" style="color:var(--jd-green)">Moissonneuses‑batteuses</span>
+    </a>
+    <!-- Tuile 3 -->
+    <a href="#precision" class="group flex flex-col items-center gap-3">
+      <span
+        class="relative inline-flex h-32 w-32 rounded-full overflow-hidden border border-black/10 shadow-sm transition-transform group-hover:scale-[1.02]">
+        <img src="images/machine-elec.jpg" alt="Une technologie d'agriculture de précision"
+          class="h-full w-full object-cover" />
+      </span>
+      <span class="text-sm font-semibold text-balance" style="color:var(--jd-green)">Une technologie d'agriculture de
+        précision</span>
+    </a>
+    <!-- Tuile 4 -->
+    <a href="#" class="group flex flex-col items-center gap-3">
+      <span
+        class="relative inline-flex h-32 w-32 rounded-full overflow-hidden border border-black/10 shadow-sm transition-transform group-hover:scale-[1.02]">
+        <img src="images/véhicules.jpg" alt="Véhicules utilitaires Gator" class="h-full w-full object-cover" />
+      </span>
+      <span class="text-sm font-semibold text-balance" style="color:var(--jd-green)">Véhicules utilitaires Gator</span>
+    </a>
+    <!-- Tuile 5 -->
+    <a href="#" class="group flex flex-col items-center gap-3">
+      <span
+        class="relative inline-flex h-32 w-32 rounded-full overflow-hidden border border-black/10 shadow-sm transition-transform group-hover:scale-[1.02]">
+        <img src="images/tondeuses.jpg" alt="Tondeuses" class="h-full w-full object-cover" />
+      </span>
+      <span class="text-sm font-semibold" style="color:var(--jd-green)">Tondeuses</span>
+    </a>
+    <!-- Tuile 6 -->
+    <a href="#" class="group flex flex-col items-center gap-3">
+      <span
+        class="relative inline-flex h-32 w-32 rounded-full overflow-hidden border border-black/10 shadow-sm transition-transform group-hover:scale-[1.02]">
+        <img src="images/equipement.jpg" alt="Équipement pour le foin et le fourrage"
+          class="h-full w-full object-cover" />
+      </span>
+      <span class="text-sm font-semibold text-balance" style="color:var(--jd-green)">Équipement pour le foin et le
+        fourrage</span>
+    </a>
+  </div>
+</section>
   <!-- Agriculture de précision -->
   <section id="precision" class="relative border-y bg-gradient-to-b from-neutral-50 to-white py-16">
     <div class="mx-auto max-w-7xl px-4">
@@ -312,7 +390,7 @@
         <!-- Card 1 -->
         <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-transform hover:-translate-y-0.5">
           <div class="aspect-[16/9] w-full overflow-hidden">
-            <img src="#" alt="AutoTrac & guidage" class="h-full w-full object-cover" />
+            <img src="images/pack-essentiel.jpg" alt="AutoTrac & guidage" class="h-full w-full object-cover" />
           </div>
           <div class="p-5">
             <h3 class="text-lg font-semibold">AutoTrac™ & guidage</h3>
@@ -323,7 +401,7 @@
         <!-- Card 2 -->
         <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-transform hover:-translate-y-0.5">
           <div class="aspect-[16/9] w-full overflow-hidden">
-            <img src="#" alt="JDLink & télémétrie" class="h-full w-full object-cover" />
+            <img src="images/pack-essentiel.jpg" alt="JDLink & télémétrie" class="h-full w-full object-cover" />
           </div>
           <div class="p-5">
             <h3 class="text-lg font-semibold">JDLink™ & télémétrie</h3>
@@ -334,12 +412,12 @@
         <!-- Card 3 -->
         <article class="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition-transform hover:-translate-y-0.5">
           <div class="aspect-[16/9] w-full overflow-hidden">
-            <img src="#" alt="Documentation & partage" class="h-full w-full object-cover" />
+            <img src="images/pack-essentiel.jpg" alt="Documentation & partage" class="h-full w-full object-cover" />
           </div>
           <div class="p-5">
             <h3 class="text-lg font-semibold">Documentation & partage</h3>
             <p class="mt-1 text-sm text-neutral-600">Rendement, application, cartes de champs — tout centralisé.</p>
-            <a href="#" class="mt-3 inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">En savoir plus <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+            <a href="images/pack-essentiel.jpg" class="mt-3 inline-flex items-center gap-2 text-sm font-medium" style="color:var(--jd-green)">En savoir plus <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
           </div>
         </article>
       </div>
@@ -364,7 +442,7 @@
         </ul>
       </div>
       <div class="overflow-hidden rounded-3xl border border-black/10 bg-neutral-50 p-5 shadow-sm">
-        <img src="#" alt="Atelier et pièces" class="h-64 w-full rounded-2xl object-cover" />
+        <img src="images/machine-elec.jpg" alt="Atelier et pièces" class="h-64 w-full rounded-2xl object-cover" />
         <div class="mt-4 grid grid-cols-3 gap-4">
           <div class="text-center"><div class="text-2xl font-extrabold" style="color:var(--jd-green)">24/7</div><div class="text-sm text-neutral-600">JD Parts</div></div>
           <div class="text-center"><div class="text-2xl font-extrabold" style="color:var(--jd-green)">+10k</div><div class="text-sm text-neutral-600">réfs en stock</div></div>
@@ -412,7 +490,7 @@
     </div>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <details class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
-        <summary class="cursor-pointer list-none text-base font-semibold flex items-center justify-between">Puis-je connecter mes machines non‑Deere à JDLink™ ?<i data-lucide="chevron-right" class="w-5 h-5"></i></summary>
+        <summary class="cursor-pointer list-none text-base font-semibold flex items-center justify-between">Puis-je connecter mes machines non‑CRAUMAT à JDLink™ ?<i data-lucide="chevron-right" class="w-5 h-5"></i></summary>
         <p class="mt-3 text-sm text-neutral-700">Oui, via certains kits de rétrofit compatibles. Vérifiez la compatibilité auprès de votre concessionnaire.</p>
       </details>
       <details class="rounded-2xl border border-black/10 bg-white p-5 shadow-sm">
